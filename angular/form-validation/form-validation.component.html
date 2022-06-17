@@ -1,0 +1,27 @@
+<div class="form-validation_container">
+  <perfect-scrollbar>
+    <ng-container *ngIf="isListView">
+
+      <div class="actions-container">
+        <button
+          mat-button
+          class="create-btn"
+          (click)="addNewValidation()"
+        >Add new</button>
+      </div>
+      <app-validations-list
+        [validations]="validations"
+        (onEdit)="handleEdit(index)"
+        (onDelete)="handleDelete(index)"
+        (onDuplicate)="handleDuplicate(index)"
+      ></app-validations-list>
+
+    </ng-container>
+
+    <app-validation-form
+      *ngIf="isDetailView"
+      [validation]="validation"
+      (onBackClick)="showList()"
+    ></app-validation-form>
+  </perfect-scrollbar>
+</div>
